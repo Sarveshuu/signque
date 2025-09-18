@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignVerse – Your Gateway to Web3 Identity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to complement Tailwind CSS */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ff8c00, #ff5722);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Panel Style */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* For Safari */
+            border-radius: 1.5rem; /* 24px */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom Nav Link Hover Animation */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover {
+            color: white;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Floating Animation for Hero Token */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Glowing Hover Effect for CTA Button */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff8c00; }
+            50% { box-shadow: 0 0 20px #fff, 0 0 30px #ff8c00, 0 0 40px #ff5722; }
+            100% { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff8c00; }
+        }
+        .cta-button:hover {
+            animation: glow 1.5s infinite;
+        }
+
+        /* Scroll-triggered Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Flip Animation */
+        .quest-card {
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            cursor: pointer;
+        }
+        .quest-card:hover {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden; /* For Safari */
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Pulse Hover Effect for Social Icons */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .social-icon:hover {
+            animation: pulse 1s infinite;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-panel mx-4 mt-4">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold tracking-wider">SIGN</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-gray-200">What is SIGN?</a>
+                <a href="#quests" class="nav-link text-gray-200">Quests</a>
+                <a href="#stats" class="nav-link text-gray-200">Stats</a>
+                <a href="#community" class="nav-link text-gray-200">Community</a>
+            </nav>
+            <a href="#quests" class="hidden md:inline-block bg-white text-orange-500 font-semibold px-5 py-2 rounded-lg hover:bg-gray-200 transition-colors">Start Quest</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center pt-24 pb-12">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-8 fade-in">
+                        Secure Your Digital Signature with <span class="text-yellow-300">Sign</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-10 fade-in" style="transition-delay: 200ms;">
+                        Your decentralized identity, powered by secure quests and rewarding experiences on the blockchain.
+                    </p>
+                    <a href="#quests" class="cta-button inline-block bg-white text-orange-500 font-bold text-lg px-10 py-4 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 fade-in" style="transition-delay: 400ms;">
+                        Start Quest
+                    </a>
+                </div>
+                <div class="mt-16 animate-float">
+                    <!-- Floating SIGN token illustration -->
+                    <div class="relative w-48 h-48 mx-auto">
+                        <div class="absolute inset-0 bg-yellow-400 rounded-full opacity-50 blur-2xl"></div>
+                        <div class="relative w-full h-full bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full flex items-center justify-center shadow-2xl">
+                            <span class="text-6xl font-black text-white" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.2);">S</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is SIGN? Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in">What is SIGN?</h2>
+                    <p class="text-lg text-gray-200 max-w-3xl mx-auto fade-in" style="transition-delay: 200ms;">
+                        SignVerse is a revolutionary platform that gamifies your entry into Web3. Complete quests, earn rewards, and build your on-chain reputation securely and transparently.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Feature 1 -->
+                    <div class="glass-panel p-8 text-center fade-in transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
+                        <div class="text-5xl mb-4">🛡️</div>
+                        <h3 class="text-2xl font-bold mb-2">Secure Identity</h3>
+                        <p class="text-gray-300">Create a tamper-proof digital signature tied to your wallet, ensuring your identity is always protected.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="glass-panel p-8 text-center fade-in transition-transform duration-300 hover:scale-105 hover:-translate-y-2" style="transition-delay: 200ms;">
+                        <div class="text-5xl mb-4">🏆</div>
+                        <h3 class="text-2xl font-bold mb-2">Gamified Quests</h3>
+                        <p class="text-gray-300">Engage in fun and educational tasks to learn about Web3, from staking tokens to verifying credentials.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="glass-panel p-8 text-center fade-in transition-transform duration-300 hover:scale-105 hover:-translate-y-2" style="transition-delay: 400ms;">
+                        <div class="text-5xl mb-4">💰</div>
+                        <h3 class="text-2xl font-bold mb-2">Earn Rewards</h3>
+                        <p class="text-gray-300">Get rewarded with SIGN tokens, experience points (XP), and exclusive NFTs for every quest you complete.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quests & Rewards Section -->
+        <section id="quests" class="py-20 bg-black bg-opacity-10">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in">Quests & Rewards</h2>
+                    <p class="text-lg text-gray-200 max-w-3xl mx-auto fade-in" style="transition-delay: 200ms;">
+                        Flip a card to see the reward. Complete quests to level up your SignVerse profile and earn tokens.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Quest Card 1 -->
+                    <div class="h-80 [perspective:1000px] fade-in">
+                        <div class="quest-card w-full h-full relative">
+                            <div class="card-face card-front absolute w-full h-full glass-panel p-8 flex flex-col justify-center items-center text-center">
+                                <div class="text-4xl mb-4">🌱</div>
+                                <h3 class="text-2xl font-bold">First Stake</h3>
+                                <p class="text-gray-300 mt-2">Stake any amount of ETH to complete your first on-chain action.</p>
+                            </div>
+                            <div class="card-face card-back absolute w-full h-full glass-panel p-8 flex flex-col justify-center items-center text-center">
+                                <h4 class="text-xl font-semibold text-yellow-300">Reward</h4>
+                                <p class="text-4xl font-bold my-4">100 SIGN</p>
+                                <p class="text-2xl font-bold text-cyan-300">+50 XP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quest Card 2 -->
+                    <div class="h-80 [perspective:1000px] fade-in" style="transition-delay: 200ms;">
+                        <div class="quest-card w-full h-full relative">
+                            <div class="card-face card-front absolute w-full h-full glass-panel p-8 flex flex-col justify-center items-center text-center">
+                                <div class="text-4xl mb-4">✅</div>
+                                <h3 class="text-2xl font-bold">Verify BABT</h3>
+                                <p class="text-gray-300 mt-2">Connect your wallet and verify your Binance Account Bound Token.</p>
+                            </div>
+                            <div class="card-face card-back absolute w-full h-full glass-panel p-8 flex flex-col justify-center items-center text-center">
+                                <h4 class="text-xl font-semibold text-yellow-300">Reward</h4>
+                                <p class="text-4xl font-bold my-4">250 SIGN</p>
+                                <p class="text-2xl font-bold text-cyan-300">+120 XP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quest Card 3 -->
+                    <div class="h-80 [perspective:1000px] fade-in" style="transition-delay: 400ms;">
+                        <div class="quest-card w-full h-full relative">
+                            <div class="card-face card-front absolute w-full h-full glass-panel p-8 flex flex-col justify-center items-center text-center">
+                                <div class="text-4xl mb-4">🤝</div>
+                                <h3 class="text-2xl font-bold">Community Vote</h3>
+                                <p class="text-gray-300 mt-2">Participate in a governance proposal on our Snapshot space.</p>
+                            </div>
+                            <div class="card-face card-back absolute w-full h-full glass-panel p-8 flex flex-col justify-center items-center text-center">
+                                <h4 class="text-xl font-semibold text-yellow-300">Reward</h4>
+                                <p class="text-4xl font-bold my-4">150 SIGN</p>
+                                <p class="text-2xl font-bold text-cyan-300">+75 XP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Live Stats Section -->
+        <section id="stats" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in">Live Stats</h2>
+                    <p class="text-lg text-gray-200 max-w-3xl mx-auto fade-in" style="transition-delay: 200ms;">
+                        Join a rapidly growing ecosystem of Web3 explorers.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+                    <div class="glass-panel p-8 fade-in">
+                        <p class="text-5xl font-extrabold" data-target="12543">0</p>
+                        <p class="text-xl text-gray-300 mt-2">Total Users</p>
+                    </div>
+                    <div class="glass-panel p-8 fade-in" style="transition-delay: 200ms;">
+                        <p class="text-5xl font-extrabold" data-target="38910">0</p>
+                        <p class="text-xl text-gray-300 mt-2">Signatures Created</p>
+                    </div>
+                    <div class="glass-panel p-8 fade-in" style="transition-delay: 400ms;">
+                        <p class="text-5xl font-extrabold" data-target="72189">0</p>
+                        <p class="text-xl text-gray-300 mt-2">Quests Completed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join the Community Section -->
+        <section id="community" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in">Join the Community</h2>
+                <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-10 fade-in" style="transition-delay: 200ms;">
+                    Stay updated, connect with other users, and shape the future of SignVerse.
+                </p>
+                <div class="flex justify-center space-x-8 mb-10 fade-in" style="transition-delay: 400ms;">
+                    <a href="#" class="social-icon text-5xl transition-transform duration-300 hover:text-yellow-300">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.83c-.15.66-1.12 5.02-1.28 5.58-.14.53-.41.67-.7.67-.32 0-.5-.22-.71-.38-.28-.21-1.39-1.1-2.09-1.62-.7-.52-.36-.8.15-1.28.1-.09.68-.62.75-.68.07-.07.15-.17 0-.25-.09-.04-1.22.75-1.22.75-.41.25-1 .73-1.62.73-.55 0-1.14-.23-1.3-.44-.22-.29-.18-.68 0-1.02.43-.8 1.15-2.6 1.43-3.45.24-.71.55-1.02.9-1.02.23 0 .5.14.62.28.12.14.15.42.12.58-.09.35-.58 2.22-.58 2.22l-.01.12s.14.42.47.42c.4 0 .9-.6 1.14-.81.25-.21.94-1.02 1.34-1.48.4-.46.79-.7.79-.7s.35-.33.61-.17z"/></svg>
+                    </a>
+                     <a href="https://x.com/SarveshSIGN" target="_blank" class="social-icon text-5xl transition-transform duration-300 hover:text-yellow-300">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+                <a href="#" class="cta-button inline-block bg-white text-orange-500 font-bold text-lg px-10 py-4 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 fade-in" style="transition-delay: 600ms;">
+                    Join Telegram
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="py-8 border-t border-white border-opacity-20">
+        <div class="container mx-auto px-6 text-center text-gray-300">
+            <p>&copy; 2025 SignVerse. All Rights Reserved.</p>
+            <p class="mt-2">Built with ❤️ by <a href="https://x.com/SarveshSIGN" target="_blank" class="font-semibold text-white hover:underline">@SarveshSIGN</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll-triggered Animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const elementsToAnimate = document.querySelectorAll('.fade-in');
+            elementsToAnimate.forEach(el => observer.observe(el));
+            
+            // Animated Counters
+            const counters = document.querySelectorAll('[data-target]');
+            const speed = 200; // The lower the number, the faster the count
+
+            const countUp = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    const increment = Math.ceil(target / speed);
+
+                    if (count < target) {
+                        counter.innerText = Math.min(count + increment, target);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                updateCount();
+            };
+            
+            const statsSection = document.getElementById('stats');
+            const statsObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counters.forEach(counter => {
+                           countUp(counter);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+    </script>
+</body>
+</html>
